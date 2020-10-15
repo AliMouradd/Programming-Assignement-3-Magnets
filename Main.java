@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -17,11 +18,13 @@ public class Main {
 
         char [][] charArr = new char [lineOne.length()][2];
 
-        // for(int i = charArr.length-1; i >= 0; i --){
-        //     for(int j = charArr[i].length-1; j >= 0; j-- ){
-        //         System.out.println("["+i+"]["+j+"] ["+(i) +"]["+(j-1)+"]");
-        //     }
-        // }
+        for(int i = 0; i<charArr.length; i ++){
+            for(int j = 0; j<charArr[i].length-1; j+=2){
+                //charArr[i][j] =
+                System.out.println("Values at arr["+i+"]["+j+"] ["+i+"]["+(j+1)+"] is "+charArr[i][j]);
+            }
+        }
+
         System.out.println(Arrays.deepToString(charArr));
     }
 }
