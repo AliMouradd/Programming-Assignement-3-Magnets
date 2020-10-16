@@ -27,5 +27,48 @@ public class Main {
         }
 
         System.out.println(Arrays.deepToString(charArr));
+
+        String location = "";
+        while(magnetCount != 0){
+            for(int i = 0; i < charArr.length; i++){
+                for(int j = 0; j < charArr[i].length-1; j+=2){
+                    // Checks space for [+ ,*] then fills * with -
+                    if(charArr[i][j] == '+' && charArr[i][j+1] == '*'){
+                        charArr[i][j+1] = '-';
+                        //keep track of location of full magnet using string 
+                        location += (i +" " + j + " "+ i + " " + (j+1) + "\n");
+                        magnetCount--;
+                    // Checks Space for [*, +] and fills * with -
+                    }else if(charArr[i][j] == '*' && charArr[i][j+1] == '+'){
+                        charArr[i][j] = '-';
+                        //keep track of location of full magnet using string 
+                        location += (i +" " + (j+1) + " "+ i + " " + j+ "\n");
+                        magnetCount--;
+                    //checks space for [-,*] and fills * with +
+                    }else if(charArr[i][j] == '-' && charArr[i][j+1] == '*'){
+                        charArr[i][j+1] = '+';
+                        //keep track of location of full magnet using string 
+                        location += (i +" " + (j+1) + " "+ i + " " + j+ "\n");
+                        magnetCount--;
+                    //checks space for [*,-] and fills * with +
+                    }else if(charArr[i][j] == '*' && charArr[i][j+1] == '-'){
+                        charArr[i][j] = '+';
+                        //keep track of location of full magnet using string 
+                        location += (i +" " + j + " "+ i + " " + (j+1)+ "\n");
+                        magnetCount--;
+                    //checks space for [+,-] and keeps track of magnet location
+                    }else if(charArr[i][j] == '+' && charArr[i][j+1] == '-'){
+                        //keep track of location of full magnet using string 
+                        location += (i +" " + j + " "+ i + " " + (j+1)+ "\n");
+                        magnetCount--;
+                    //checks space for [-,+] and fills * with +
+                    }else if(charArr[i][j] == '-' && charArr[i][j+1] == '+'){
+                        //keep track of location of full magnet using string 
+                        location += (i +" " + (j+1) + " "+ i + " " + j+ "\n");
+                        magnetCount--;
+                    }
+                }
+            }
+        }
     }
 }
