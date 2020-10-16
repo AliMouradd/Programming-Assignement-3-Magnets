@@ -12,16 +12,17 @@ public class Main {
         System.out.println(magnetCount);
 
         String lineOne = reader.next();
-        String lineTwo = reader.next();
+        lineOne += reader.next();
 
-        System.out.println(lineOne.length() + "\n" + lineTwo);
+        System.out.println(lineOne.length() + "\n" + lineOne);
 
-        char [][] charArr = new char [lineOne.length()][2];
+        char [][] charArr = new char [lineOne.length()/2][2];
 
         for(int i = 0; i<charArr.length; i ++){
             for(int j = 0; j<charArr[i].length-1; j+=2){
-                //charArr[i][j] =
-                System.out.println("Values at arr["+i+"]["+j+"] ["+i+"]["+(j+1)+"] is "+charArr[i][j]);
+                charArr[i][j] = lineOne.charAt(i);
+                charArr[i][j+1] = lineOne.charAt(i+(lineOne.length()/2));
+                System.out.println("Values at arr["+i+"]["+j+"] ["+i+"]["+(j+1)+"] is "+charArr[i][j] + " " + charArr[i][j+1]);
             }
         }
 
